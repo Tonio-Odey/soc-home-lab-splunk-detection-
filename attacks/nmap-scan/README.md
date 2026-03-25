@@ -21,7 +21,7 @@ The scan reveals open ports such as 135, 139 and 445 on the target.
 ### Detection in Splunk
 ![Nmap Detection](../../screenshots/nmap-splunk.png)
 
-## Detection in Splunk
+## Detection queries in Splunk
 ```spl
 index=firewall sourcetype=pfsense source=udp:514
 ```
