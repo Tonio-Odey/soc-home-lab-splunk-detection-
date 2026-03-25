@@ -16,7 +16,7 @@ run
 ```
 
 ## Attack Evidence
-ExternalBlue exploit attempt targeting port 445 detected in firewall logs. Target is patched; attack unsuccessful.
+ExternalBlue exploit attempt targeting port 445 detected in firewall logs. Target is patched; attack unsuccessful. 
 
 ### Exploit Setup
 ![Exploit Setup](../../screenshots/eternalblue-setup.png)
