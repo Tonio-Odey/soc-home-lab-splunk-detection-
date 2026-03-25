@@ -3,7 +3,7 @@
 ## Overview
 This project demonstrates a complete SOC (Security Operations Center) home lab environment used to simulate real-world cyber attacks and detect them using Splunk.
 
-The lab includes attack simulation, log collection, and detection analysis.
+The lab includes attack simulation, log collection, and detection analysis. 
 
 ---
 
