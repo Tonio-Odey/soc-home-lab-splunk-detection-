@@ -27,7 +27,7 @@ ExternalBlue exploit attempt targeting port 445 detected in firewall logs. Targe
 ### Detection in Splunk
 ![Splunk Detection](../../screenshots/eternalblue-splunk.png)
 
-## Detection in Splunk
+## Detection query in Splunk
 ```spl
 index=firewall sourcetype=pfsense source=udp:514
 ```
