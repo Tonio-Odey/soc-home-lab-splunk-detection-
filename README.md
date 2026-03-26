@@ -12,7 +12,7 @@ The lab includes attack simulation, log collection, and detection analysis.
 - Attacker Machine: Kali Linux  
 - Firewall/Router: pfSense  
 - SIEM: Splunk Enterprise  
-- Victims: Windows 10
+- Victim: Windows 10
   
 ---
 
@@ -49,12 +49,25 @@ The lab includes attack simulation, log collection, and detection analysis.
 
 ## Log Collection
 
-- Sysmon installed on Windows endpoints
-- Logs forwarded to Splunk using Universal Forwarder
-- Event logs collected:
-  - Network connections (Event ID 3)
-  - Failed logons (Event ID 4625)
+- pfSense firewall configured to forward system logs to Splunk via syslog (UDP 514)
+- Primary visibility of all attack activity was obtained from pfSense logs (network-level monitoring)
 
+- Windows endpoints configured with Sysmon and Splunk Universal Forwarder (limited visibility observed)
+
+### Logs Observed in Splunk
+
+- pfSense Logs:
+  - Detected network traffic from attacker machine (Kali Linux)
+  - Logged connection attempts to target systems
+  - Observed activity on key ports such as:
+    - Port 445 (SMB)
+    - Port 137 (NetBIOS)
+  - Source identified as attacker IP
+  - Consistent log source: `UDP:514`, sourcetype: `pfsense`
+
+- Windows / Sysmon Logs:
+  - Limited or no direct Event ID visibility (e.g., Event ID 3 or 4625 not explicitly observed)
+  - Indicates that most attack activity was captured at the firewall level rather than endpoint level
 ---
 
 ## Attack Simulations
@@ -88,16 +101,23 @@ Splunk was used to detect:
 - Brute-force login attempts
 - Suspicious SMB exploitation traffic
 
-Detection was based on:
-- Sysmon logs
-- Windows Security logs
-- Traffic patterns
+Detection was based on analysis of pfSense firewall logs in Splunk.
+
+Key indicators used include:
+
+- Source IP identification (attacker machine)
+- Destination IP (target systems)
+- Destination ports (e.g., 445 for SMB, 137 for NetBIOS)
+- High frequency of connection attempts
+- Multiple connections to different ports (port scanning behavior)
+
+Attack patterns were identified by observing unusual traffic behavior and repeated connection attempts from a single source.
 
 ---
 
 ## Screenshots
 
-All screenshots used in this project are stored in: screenshots/
+All screenshots used in this project are stored in:
 
 ```
 screenshots/
