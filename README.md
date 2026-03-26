@@ -120,7 +120,7 @@ Attack patterns were identified by observing unusual traffic behavior and repeat
 All screenshots used in this project are stored in:
 
 ```
-[screenshots](/screenshots/)
+screenshots/
 ```
 
 ---
