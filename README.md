@@ -20,14 +20,16 @@ The lab includes attack simulation, log collection, and detection analysis.
 
 - pfSense connected to:
   - NAT (Internet access)
-  - Host-Only network (vmnet1 internal lab) and Host-Only (vmnet2 internal lab) 
+  - Host-Only network (vmnet1 internal lab) with IP 192.168.50.0/24 and Host-Only (vmnet2 internal lab) with IP 192.168.10.0/24
+  - pfsense acted as gateway of both networks 192.168.50.1 and 192.168.10.1
+    
+- Kali Linux attacker vm:
+  - Connected to Host-Only vmnet2 and receives internet through pfsense
+  - 192.168.10.5
 
-- Kali Linux:
-  - Connected to Host-Only vmnet2
-
-- Splunk + Victims:
-  - Connected to Host-Only vmnet1
-  - Receive internet through pfSense
+- windows 10 Victim vm:
+  - Connected to Host-Only vmnet1 and receives internet through pfSense
+  - 192.168.50.5
 
 ---
 
